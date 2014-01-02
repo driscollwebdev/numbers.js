@@ -1,7 +1,7 @@
-numbers
+numbers.js
 =======
 
-numbers is a client-side javascript library that adds some advanced mathematics functionality to the standard Math library.
+numbers.js is a client-side javascript library that adds some advanced mathematics functionality to the standard Math library.
 
 Library Contents
 -------
