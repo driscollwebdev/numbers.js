@@ -69,6 +69,12 @@ Reference
 
 ### Statistical Functions
 - **mean (or avg):** Find the arithmetic mean of a set of numbers.
+
+  ```JavaScript
+  console.log(F.mean([2,3,4,5])); // > 3.5
+  console.log(F.avg([2,3,4,5])); // > 3.5
+  ```
+
 - **variance:** Find the variance of a set of numbers.
 - **stdev (or standardDeviation):** Find the standard deviation of a set of numbers.
 - **stderr (or standardError):** Find the standard error of a set of numbers.
@@ -77,7 +83,18 @@ Reference
 
 ### Combinatorial Functions
 - **nPr (or permutations):** Find the number of ordered sets of **r** items that can be selected from a set of **n** items.
+
+  ```JavaScript
+  console.log(F.nPr(20,2)); // > 380
+  console.log(F.permutations(20,2)); // > 380
+  ```
+
 - **nCr (or combinations):** Find the number of unordered sets of **r** items that can be selected from a set of **n** items.
+
+  ```JavaScript
+  console.log(F.nCr(10,5)); // > 252
+  console.log(F.combinations(10,5)); // > 252
+  ```
 
 ### Other Functions
 - **rebase:** Convert a number from one base to another. If no value is given for the input base, decimal (base 10) is assumed.
