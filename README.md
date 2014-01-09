@@ -178,8 +178,8 @@ Reference
   ```HTML
   <script src="numbers-0.1.0-min.js"></script>
   <script>
-    console.log(F.avg([1,2,3,4])); > 2.5
+    console.log(F.avg([1,2,3,4])); // > 2.5
     numbers.noConflict();
-    console.log(F.avg([1,2,3,4])); > 2.5
+    console.log(F.avg([1,2,3,4])); // > 2.5
   </script>
   ```
