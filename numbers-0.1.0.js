@@ -2,8 +2,22 @@ window.numbers = {};
 
 window.F = window.numbers = function (nums) {
     var knownPrimesLessThan100 = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97];
+    var ref_F = null;
+
+    (function init() {
+        if(window.F !== null && typeof window.F !== 'undefined') {
+            ref_F = window.F;
+        }
+    })();
 
     nums.version = nums.ver = nums.v = "0.1.0";
+
+    nums.noConflict = function() {
+        if(ref_F !== null) {
+            window.F = ref_F;
+        }
+        return this;
+    };
 
     nums.sum = function (nSet) {
         var c = nSet.length;
@@ -195,17 +209,17 @@ window.F = window.numbers = function (nums) {
         }
 
         var srp = Math.floor(Math.sqrt(p));
-        for (var i = 101; i <= srp; i+= 2) {
+        for (var j = 101; j <= srp; j+= 2) {
             var pm = false;
-            for(var j = 0; j < knownPrimesLessThan100.length; j++) {
-                if(i%knownPrimesLessThan100[j] === 0) {
+            for(var k = 0; k < knownPrimesLessThan100.length; k++) {
+                if(j%knownPrimesLessThan100[k] === 0) {
                     pm = true;
                     break;
                 }
             }
             if(pm) continue;
 
-            if(p%i === 0) return false;
+            if(p%j === 0) return false;
         }
 
         return true;
@@ -219,5 +233,27 @@ window.F = window.numbers = function (nums) {
         return parseInt(parseInt(n, cb).toString(nb), 10);
     };
 
-    return nums;
+    nums.deg2rad = function (t) {
+        return (Math.PI*t)/180;
+    };
+
+    nums.rad2deg = function (t) {
+        return (180*t)/Math.PI;
+    };
+
+    nums.rect2pol = function(x, y) {
+        return {
+            r: Math.sqrt(Math.pow(x,2) + Math.pow(y,2)),
+            t: Math.atan2(y, x)
+        };
+    };
+
+    nums.pol2rect = function(r, t) {
+        return {
+            x: r*Math.cos(t),
+            y: r*Math.sin(t)
+        };
+    };
+
+    return window.F = nums;
 }(window.numbers);
