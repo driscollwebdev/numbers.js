@@ -147,7 +147,7 @@ Reference
 - **noConflict:** Run numbers.js in no-conflict mode, optionally aliasing the library to a different variable. Has no effect on global **F** variable if there is no conflict.
 
   **Example 1:** Reassign value of F
-  ```
+  ```HTML
   <script>
     window.F = { foo: function() { return "Hello, world!"; } };
   </script>
@@ -161,7 +161,7 @@ Reference
   ```
 
   **Example 2:** Use global _numbers_ variable
-   ```
+   ```HTML
    <script>
      window.F = { foo: function() { return "Hello, world!"; } };
    </script>
@@ -175,7 +175,7 @@ Reference
    ```
 
   **Example 3:** Do nothing if there is no conflict
-  ```
+  ```HTML
   <script src="numbers-0.1.0-min.js"></script>
   <script>
     console.log(F.avg([1,2,3,4])); > 2.5
