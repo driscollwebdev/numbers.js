@@ -88,7 +88,7 @@ Reference
   console.log(F.standardDeviation([2,3,4,5])); // > 1.118033988749895
   ```
 
-- **stderr (or standardError):** Find the standard error of a set of numbers.
+- **sem (or standardErrorOfMean):** Find the standard error of the mean of a set of numbers.
 - **covariance:** Find the covariance of two sets of numbers.
 - **z (or zValue):** Given a mean and standard deviation, find the z-value of a number **n**.
 
@@ -106,6 +106,12 @@ Reference
   console.log(F.nCr(10,5)); // > 252
   console.log(F.combinations(10,5)); // > 252
   ```
+### Vector Calculus Functions
+- **dotProduct:** Find the inner product of two vectors.
+- **isOrthogonal:** Determine whether two vectors are orthogonal to one another.
+- **magnitude:** Determine the magnitude of a vector.
+- **normalize:** Normalize a vector.
+
 
 ### Conversion Functions
 - **rebase:** Convert a number from one base to another. If no value is given for the input base, decimal (base 10) is assumed.

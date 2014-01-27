@@ -1,6 +1,5 @@
 window.numbers = {};
-
-window.F = window.numbers = function (nums) {
+window.numbers = function (nums) {
     var knownPrimesLessThan100 = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97];
     var ref_F = null;
 
@@ -58,7 +57,7 @@ window.F = window.numbers = function (nums) {
         var cY = ySet.length;
 
         if (cX !== cY) {
-            throw new RangeError();
+            throw new Error("Sets are not of equal size.");
         }
 
         var sX = this.sum(xSet);
@@ -75,23 +74,12 @@ window.F = window.numbers = function (nums) {
         return Math.sqrt(this.variance(nSet));
     };
 
-    nums.stderr = nums.standardError = function (nSet) {
+    nums.sem = nums.standardErrorOfMean = function (nSet) {
         return Math.sqrt(this.variance(nSet) / nSet.length);
     };
 
     nums.z = nums.zValue = function (x, mean, stdev) {
         return (x - mean) / stdev;
-    };
-
-    nums.stdpdf = nums.standardDensity = function (z) {
-        var n = Math.exp(-(Math.pow(z, 2)) / 2);
-        var d = Math.sqrt(2 * Math.PI);
-
-        return n / d;
-    };
-
-    nums.t = nums.tValue = function (sampMean, sampStDev, sampSize, popMean) {
-        return   ((sampMean - popMean) * Math.sqrt(sampSize)) / sampStDev;
     };
 
     nums.nFac = nums.factorial = function (n) {
@@ -223,6 +211,59 @@ window.F = window.numbers = function (nums) {
         }
 
         return true;
+    };
+
+    nums.dotProduct = function(u, v) {
+        var ml = u.length;
+        var nl = v.length;
+
+        if(ml !== nl) {
+            throw new Error("Vectors do not have equal sizes.");
+        }
+
+        var dp = 0;
+        for (var i = 0; i<ml; i++) {
+            dp += u[i]*v[i];
+        }
+
+        return dp;
+    };
+
+    nums.isOrthogonal = function(u, v) {
+        return Math.round(this.dotProduct(u,v),0) === 0;
+    };
+
+    nums.magnitude = function(A) {
+        return Math.sqrt(this.dotProduct(A,A));
+    };
+
+    nums.normalize = function(A) {
+        var normA = [];
+        var Al = A.length;
+        var mA = this.magnitude(A);
+
+        for(var i = 0; i < Al; i++) {
+            normA[i] = A[i]/mA;
+        }
+
+        return normA;
+    };
+
+    nums.tr = nums.trace = function(A) {
+        var Al = A.length;
+        var tr = 0;
+        for(var i = 0; i < Al; i++) {
+            if(typeof A[i] !== 'array') {
+                throw new Error("Missing vector at column " + i);
+            }
+            if(A[i][i] === null || typeof A[i][i] === 'undefined') {
+                throw new Error("Missing value at column " + i + ", row " + i);
+            }
+
+            tr += A[i][i];
+        }
+
+        return tr;
     };
 
     nums.rebase = function (n, nb, cb) {
