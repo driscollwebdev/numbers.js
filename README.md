@@ -18,7 +18,7 @@ Reference
   console.log(F.ver); // > 0.1.0
   ```
 
-### Basic Arithmetic Functions
+### Arithmetic and Number Theory Functions
 - **sum:** Find the sum of a set of numbers.
          
   ```JavaScript
@@ -67,6 +67,9 @@ Reference
   console.log(F.isPrime(31)); // > true
   ```
 
+- **isRelativelyPrime:** Determine whether two numbers are relatively prime to one another.
+- **isCongruent:** Determine whether two numbers are congruent to one another by some modulus.
+
 ### Statistical Functions
 - **mean (or avg):** Find the arithmetic mean of a set of numbers.
 
@@ -106,7 +109,7 @@ Reference
   console.log(F.nCr(10,5)); // > 252
   console.log(F.combinations(10,5)); // > 252
   ```
-### Vector Calculus Functions
+### Vector Calculus and Linear Algebra Functions
 - **dotProduct:** Find the inner product of two vectors.
 - **isOrthogonal:** Determine whether two vectors are orthogonal to one another.
 - **magnitude:** Determine the magnitude of a vector.

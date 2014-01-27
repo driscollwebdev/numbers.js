@@ -213,6 +213,14 @@ window.numbers = function (nums) {
         return true;
     };
 
+    nums.isRelativelyPrime = function(a,b) {
+        return this.gcd(a,b) === 1;
+    };
+
+    nums.isCongruent = function(a,b,mod) {
+        return (a-b)%mod === 0;
+    };
+
     nums.dotProduct = function(u, v) {
         var ml = u.length;
         var nl = v.length;
@@ -253,7 +261,7 @@ window.numbers = function (nums) {
         var Al = A.length;
         var tr = 0;
         for(var i = 0; i < Al; i++) {
-            if(typeof A[i] !== 'array') {
+            if(!Array.isArray(A[i])) {
                 throw new Error("Missing vector at column " + i);
             }
             if(A[i][i] === null || typeof A[i][i] === 'undefined') {
