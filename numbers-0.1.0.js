@@ -83,25 +83,40 @@ window.numbers = function (nums) {
     };
 
     nums.nFac = nums.factorial = function (n) {
+	
+        if (this.factorial.cache[n]) {
+	    return this.factorial.cache[n];
+        }        
+
         if (n == 0 || n == 1) {
             return 1;
         }
 
         var p = n * this.factorial(n - 1);
 
+        this.factorial.cache[n] = Math.round(p, 0);
+
         return Math.round(p, 0);
     };
 
     nums.nPr = nums.permutations = function (n, r) {
+
+        if(this.permutations.cache[n][r]) {
+            return this.permutations.cache[n][r];
+        }        
+
         if (r > n) {
+            this.permutations.cache[n][r] = 0;
             return 0;
         }
 
         if (r == n || r == 0) {
+            this.permutations.cache[n][r] = 1;
             return 1;
         }
 
         if (r == 1) {
+            this.permutations.cache[n][r] = n;
             return n;
         }
 
@@ -113,32 +128,42 @@ window.numbers = function (nums) {
             while (t > ndr) {
                 p *= t--;
             }
-
+            this.permutations.cache[n][r] = Math.round(p, 0);
             return Math.round(p, 0);
         }
 
         var nf = this.factorial(n);
         var ndrf = this.factorial(n - r);
 
+        this.permutations.cache[n][r] = Math.round(nf / ndrf, 0);
         return Math.round(nf / ndrf, 0);
     };
 
     nums.nCr = nums.combinations = function (n, r) {
+	
+        if (this.combinations.cache[n][r]) {
+            return this.combinations.cache[n][r];
+        }        
+
         if (r > n) {
+            this.combinations.cache[n][r] = 0;
             return 0;
         }
 
         if (r == n || r == 0) {
+            this.combinations.cache[n][r] = 1;
             return 1;
         }
 
         if (r == 1) {
+            this.combinations.cache[n][r] = n;
             return n;
         }
 
         var p = this.permutations(n, r);
         var rf = this.factorial(r);
 
+        this.combinations.cache[n][r] = Math.round(p / rf, 0);
         return Math.round(p / rf, 0);
     };
 
@@ -187,13 +212,29 @@ window.numbers = function (nums) {
     };
 
     nums.isPrime = function(num) {
+	if (this.isPrime.cache[num]) {
+	    return this.isPrime.cache[num];
+	}
+
         var p = parseInt(num, 10);
-        if(p === 'NaN') return 'undefined';
-        if(p === 1) return false;
-        if(knownPrimesLessThan100.indexOf(p) >= 0) return true;
+        if(p === 'NaN') {
+	    this.isPrime.cache[num] = 'undefined';
+	    return 'undefined';
+	}
+        if(p === 1) {
+	    this.isPrime.cache[num] = false;
+	    return false;
+	}
+        if(knownPrimesLessThan100.indexOf(p) >= 0) {
+	    this.isPrime.cache[num] = true;
+	    return true;
+	}
 
         for(var i = 0; i < knownPrimesLessThan100.length; i++) {
-            if(p%knownPrimesLessThan100[i] === 0) return false;
+            if(p%knownPrimesLessThan100[i] === 0) {
+		this.isPrime.cache[num] = false;
+		return false;
+	    }
         }
 
         var srp = Math.floor(Math.sqrt(p));
@@ -207,9 +248,13 @@ window.numbers = function (nums) {
             }
             if(pm) continue;
 
-            if(p%j === 0) return false;
+            if(p%j === 0) {
+		this.isPrime.cache[num] = false;
+	        return false;
+	    }
         }
 
+	this.isPrime.cache[num] = true;
         return true;
     };
 
@@ -242,11 +287,12 @@ window.numbers = function (nums) {
     };
 
     nums.magnitude = function(A) {
-        return Math.sqrt(this.dotProduct(A,A));
+	var m = Math.sqrt(this.dotProduct(A,A));
+        return m;
     };
 
     nums.normalize = function(A) {
-        var normA = [];
+	var normA = [];
         var Al = A.length;
         var mA = this.magnitude(A);
 
