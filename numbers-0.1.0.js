@@ -98,6 +98,7 @@ window.numbers = function (nums) {
 
         return Math.round(p, 0);
     };
+    nums.factorial.cache = {};
 
     nums.nPr = nums.permutations = function (n, r) {
 
@@ -138,6 +139,7 @@ window.numbers = function (nums) {
         this.permutations.cache[n][r] = Math.round(nf / ndrf, 0);
         return Math.round(nf / ndrf, 0);
     };
+    nums.permutations.cache = {};
 
     nums.nCr = nums.combinations = function (n, r) {
 	
@@ -166,6 +168,7 @@ window.numbers = function (nums) {
         this.combinations.cache[n][r] = Math.round(p / rf, 0);
         return Math.round(p / rf, 0);
     };
+    nums.combinations.cache = {};
 
     nums.gcd = nums.greatestCommonDivisor = function (nSet) {
         var c = nSet.length;
@@ -257,6 +260,7 @@ window.numbers = function (nums) {
 	this.isPrime.cache[num] = true;
         return true;
     };
+    nums.isPrime.cache = {};
 
     nums.isRelativelyPrime = function(a,b) {
         return this.gcd(a,b) === 1;
