@@ -88,7 +88,7 @@ window.numbers = function (nums) {
 	    return this.factorial.cache[n];
         }        
 
-        if (n == 0 || n == 1) {
+        if (n === 0 || n === 1) {
             return 1;
         }
 
@@ -111,12 +111,12 @@ window.numbers = function (nums) {
             return 0;
         }
 
-        if (r == n || r == 0) {
+        if (r === n || r === 0) {
             this.permutations.cache[n][r] = 1;
             return 1;
         }
 
-        if (r == 1) {
+        if (r === 1) {
             this.permutations.cache[n][r] = n;
             return n;
         }
@@ -152,12 +152,12 @@ window.numbers = function (nums) {
             return 0;
         }
 
-        if (r == n || r == 0) {
+        if (r === n || r === 0) {
             this.combinations.cache[n][r] = 1;
             return 1;
         }
 
-        if (r == 1) {
+        if (r === 1) {
             this.combinations.cache[n][r] = n;
             return n;
         }
@@ -327,7 +327,7 @@ window.numbers = function (nums) {
     nums.rebase = function (n, nb, cb) {
         if (cb === null || typeof(cb) === 'undefined') cb = 10;
 
-        if (nb == cb) return n;
+        if (nb === cb) return n;
 
         return parseInt(parseInt(n, cb).toString(nb), 10);
     };
