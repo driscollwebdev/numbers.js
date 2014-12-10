@@ -72,6 +72,7 @@ Reference
   ```JavaScript
   console.log(F.isRelativelyPrime(6,9)); // > false
   console.log(F.isRelativelyPrime(4,9)); // > true
+  ```
 
 - **isCongruent:** Determine whether two numbers are congruent to one another by some modulus.
 
