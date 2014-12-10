@@ -68,7 +68,17 @@ Reference
   ```
 
 - **isRelativelyPrime:** Determine whether two numbers are relatively prime to one another.
+
+  ```JavaScript
+  console.log(F.isRelativelyPrime(6,9)); // > false
+  console.log(F.isRelativelyPrime(4,9)); // > true
+
 - **isCongruent:** Determine whether two numbers are congruent to one another by some modulus.
+
+  ```JavaScript
+  console.log(F.isCongruent(6,2,3)); // > false
+  console.log(F.isCongruent(5,2,3)); // > true
+  ```
 
 ### Statistical Functions
 - **mean (or avg):** Find the arithmetic mean of a set of numbers.
@@ -111,9 +121,31 @@ Reference
   ```
 ### Vector Calculus and Linear Algebra Functions
 - **dotProduct:** Find the inner product of two vectors.
+
+  ```JavaScript
+  console.log(F.dotProduct([1,1], [5,7])); // > 12
+  ```
+
 - **isOrthogonal:** Determine whether two vectors are orthogonal to one another.
+
+  ```JavaScript
+  console.log(F.isOrthogonal([-5,1],[1,5])); // > true
+  console.log(F.isOrthogonal([-9,6,2],[4,7,5]); // > false
+  ```
+
 - **magnitude:** Determine the magnitude of a vector.
+
+  ```JavaScript
+  console.log(F.magnitude([0,1])); // > 1 (unit vector)
+  console.log(F.magnitude([3,4,5])); // > 7.071067811865475
+  ```
+
 - **normalize:** Normalize a vector.
+
+  ```JavaScript
+  console.log(F.normalize([0,8])); // > [0,1]
+  console.log(F.normalize([3,4])); // > [0.6,0.8]
+  ```
 
 
 ### Conversion Functions
